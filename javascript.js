@@ -8,28 +8,69 @@ function getComputerChoice() {
 function capitalizeFirstLetter(inputString) {
     if (typeof inputString !== 'string') {
         return '';
-    } 
+    }
 
     return inputString[0].toUpperCase() + inputString.slice(1).toLowerCase();
 }
 
+function doesPlayerWin(playerSelection, computerSelection) {
+    return (playerSelection === 'Rock' && computerSelection === 'Scissors') ||
+        (playerSelection === 'Scissors' && computerSelection === 'Paper') ||
+        (playerSelection === 'Paper' && computerSelection === 'Rock');
+}
+
+function doesComputerWin(playerSelection, computerSelection) {
+    return (playerSelection === 'Scissors' && computerSelection === 'Rock') ||
+        (playerSelection === 'Rock' && computerSelection === 'Paper') ||
+        (playerSelection === 'Paper' && computerSelection === 'Scissors');
+}
+
 function playRound(playerSelection, computerSelection) {
-    playerSelection = capitalizeFirstLetter(playerSelection);
     let result = '';
 
-    if ((playerSelection === 'Rock' && computerSelection === 'Scissors') ||
-        (playerSelection === 'Scissors' && computerSelection === 'Paper') ||
-        (playerSelection === 'Paper' && computerSelection === 'Rock')) {
-        result = `You win! ${playerSelection} beats ${computerSelection}!`;
-    } else if ((playerSelection === 'Scissors' && computerSelection === 'Rock') ||
-        (playerSelection === 'Rock' && computerSelection === 'Paper') ||
-        (playerSelection === 'Paper' && computerSelection === 'Scissors')) {
-        result = `You lose! ${computerSelection} beats ${playerSelection}!`;
+    if (doesPlayerWin(playerSelection, computerSelection)) {
+        result = `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else if (doesComputerWin(playerSelection, computerSelection)) {
+        result =  `You Lose! ${computerSelection} beats ${playerSelection}`;
     } else {
         result = `It's a tie! You both played ${playerSelection}`;
     }
 
     return result;
+}
+
+function determineWinner(roundResult, playerSelection, computerSelection) {
+    let result = ''
+
+    if (roundResult === 1) {
+        result = `You Win! ${playerSelection} beats ${computerSelection}`;
+    } else if (roundResult === -1) {
+        result = `You Lose! ${computerSelection} beats ${playerSelection}`;
+    } else {
+        result = `It's a tie! You both played ${playerSelection}`;
+    }
+
+    return result;
+}
+
+function game() {
+    const numRounds = +prompt('How many rounds would you like to play?');
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let round = 1; round <= numRounds; round++) {
+        const playerSelection = capitalizeFirstLetter(prompt('Enter your choice'));
+        const computerSelection = getComputerChoice();
+
+        const message = playRound(playerSelection, computerSelection);
+        console.log(message);
+
+        if (doesPlayerWin(playerSelection, computerSelection)) {
+            playerScore += 1;
+        } else if (doesComputerWin(playerSelection, computerSelection)) {
+            computerScore += 1;
+        }
+    }
 }
 
 // all the ways that the player could lose
