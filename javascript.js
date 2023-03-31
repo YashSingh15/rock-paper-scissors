@@ -39,20 +39,6 @@ function playRound(playerSelection, computerSelection) {
     return result;
 }
 
-function determineWinner(roundResult, playerSelection, computerSelection) {
-    let result = ''
-
-    if (roundResult === 1) {
-        result = `You Win! ${playerSelection} beats ${computerSelection}`;
-    } else if (roundResult === -1) {
-        result = `You Lose! ${computerSelection} beats ${playerSelection}`;
-    } else {
-        result = `It's a tie! You both played ${playerSelection}`;
-    }
-
-    return result;
-}
-
 function getWinner(playerScore, computerScore) {
     let winner = '';
 
