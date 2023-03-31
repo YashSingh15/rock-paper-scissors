@@ -53,6 +53,20 @@ function determineWinner(roundResult, playerSelection, computerSelection) {
     return result;
 }
 
+function getWinner(playerScore, computerScore) {
+    let winner = '';
+
+    if (playerScore > computerScore) {
+        winner = 'player';
+    } else if (playerScore < computerScore) {
+        winner = 'computer';
+    } else {
+        winner = 'tie';
+    }
+
+    return winner;
+}
+
 function game() {
     const numRounds = +prompt('How many rounds would you like to play?');
     let playerScore = 0;
@@ -70,6 +84,16 @@ function game() {
         } else if (doesComputerWin(playerSelection, computerSelection)) {
             computerScore += 1;
         }
+    }
+
+    const winner = getWinner(playerScore, computerScore);
+
+    if (winner === 'player') {
+        console.log(`You Win!\nFinal Score\nPlayer: ${playerScore}, Computer: ${computerScore}`);
+    } else if (winner === 'computer') {
+        console.log(`You Lose!\nFinal Score\nPlayer: ${playerScore}, Computer: ${computerScore}`);
+    } else {
+        console.log(`It's a tie!\nFinal Score\nPlayer: ${playerScore}, Computer: ${computerScore}`);
     }
 }
 
