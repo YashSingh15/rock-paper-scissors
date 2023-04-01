@@ -14,15 +14,19 @@ function capitalizeFirstLetter(inputString) {
 }
 
 function doesPlayerWin(playerSelection, computerSelection) {
-    return (playerSelection === 'Rock' && computerSelection === 'Scissors') ||
+    return (
+        (playerSelection === 'Rock' && computerSelection === 'Scissors') ||
         (playerSelection === 'Scissors' && computerSelection === 'Paper') ||
-        (playerSelection === 'Paper' && computerSelection === 'Rock');
+        (playerSelection === 'Paper' && computerSelection === 'Rock')
+    );
 }
 
 function doesComputerWin(playerSelection, computerSelection) {
-    return (playerSelection === 'Scissors' && computerSelection === 'Rock') ||
+    return (
+        (playerSelection === 'Scissors' && computerSelection === 'Rock') ||
         (playerSelection === 'Rock' && computerSelection === 'Paper') ||
-        (playerSelection === 'Paper' && computerSelection === 'Scissors');
+        (playerSelection === 'Paper' && computerSelection === 'Scissors')
+    );
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -31,7 +35,7 @@ function playRound(playerSelection, computerSelection) {
     if (doesPlayerWin(playerSelection, computerSelection)) {
         result = `You Win! ${playerSelection} beats ${computerSelection}`;
     } else if (doesComputerWin(playerSelection, computerSelection)) {
-        result =  `You Lose! ${computerSelection} beats ${playerSelection}`;
+        result = `You Lose! ${computerSelection} beats ${playerSelection}`;
     } else {
         result = `It's a tie! You both played ${playerSelection}`;
     }
