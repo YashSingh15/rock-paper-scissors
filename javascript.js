@@ -1,6 +1,6 @@
 function getComputerChoice() {
     choices = ['Rock', 'Paper', 'Scissors'];
-    randomChoiceIndex = Math.floor(Math.random() * 3);
+    randomChoiceIndex = Math.floor(Math.random() * choices.length);
     randomChoice = choices[randomChoiceIndex];
     return randomChoice;
 }
