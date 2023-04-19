@@ -20,18 +20,19 @@ This repository contains a simple, text-based Rock Paper Scissors game that runs
 ## Usage
 
 1. Open the browser console (Ctrl+Shift+J for Chrome and Ctrl+Shift+K for Firefox).
-2. The game will prompt you to enter the number of rounds you'd like to play.
-3. Enter your choice (Rock, Paper, or Scissors) for each round.
+2. The game will be played for 5 rounds.
+3. Click the button of your choice (Rock, Paper, or Scissors) for each round.
 4. The console will display the result of each round and the final score.
+5. The game will then restart after a few seconds
 
 ## How It Works
 
 The game uses JavaScript to handle the game logic, which includes the following functions:
 
 - `getComputerChoice()`: Returns a random choice (Rock, Paper, or Scissors) for the computer.
-- `capitalizeFirstLetter(inputString)`: Capitalizes the first letter of a given string.
-- `doesPlayerWin(playerSelection, computerSelection)`: Determines if the player wins the round.
-- `doesComputerWin(playerSelection, computerSelection)`: Determines if the computer wins the round.
-- `playRound(playerSelection, computerSelection)`: Executes a single round and returns the result message.
-- `getWinner(playerScore, computerScore)`: Determines the overall winner of the game.
-- `game()`: Executes the game loop, prompts user for input, and displays the final result.
+- `doesPlayerWin(playerChoice, computerChoice)`: Determines if the player wins the round.
+- `doesComputerWin(playerChoice, coputerChoice)`: Determines if the computer wins the round.
+- `playRound(playerChoice, computerChoice)`: Executes a single round and updates the number of rounds played.
+- `updateScores(playerChoice, computerChoice)`: Updates the scores of player and computer based on who won the round
+- `displayRoundWinner(playerChoice, computerChoice)`: Displays the winner of a round
+- `displayGameWinner(playerScore, computerScore)`: Displays the winner of the game
